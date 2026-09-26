@@ -1,13 +1,32 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    IO.println(String.format("Hello and welcome!"));
+    Banco banco = new Banco(); /// Se tiene que crear el banco para que funcione el arraylist, es decir crear el objeto
+    System.out.println("----Test lista vacia.-----");
+    banco.listarCuentas();
+    ///Crear objeto de cada cuenta///
+    CuentaAhorro cuenta1 = new CuentaAhorro(1234,new Persona("111-1","Juan Perez",67,"Granjero"));
+    CuentaCorriente cuenta2 = new CuentaCorriente(69,new Persona("222-2","Alonoso Perez",69,"Ingeniero"));
 
-    for (int i = 1; i <= 5; i++) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        IO.println("i = " + i);
-    }
+    System.out.println("\n----Test deposito----");
+    cuenta1.depositar(150_000);
+    cuenta1.imprimirCartola();
+    cuenta2.depositar(600_000);
+    cuenta2.imprimirCartola();
+
+    System.out.println("\n----Test giro----");
+    cuenta2.girar(700_000);
+    cuenta1.girar(140_000);
+    cuenta1.girar(1000);
+
+    cuenta1.imprimirCartola();
+    cuenta2.imprimirCartola();
+
+    System.out.println("\n----Test Agregar cuentas----");
+    banco.agregarCuenta(cuenta1);
+    banco.agregarCuenta(cuenta2);
+    banco.listarCuentas();
+
+    System.out.println("\n----Test Listar Cuentas Run----");
+    banco.listarCuentasRun("676769");
+    banco.listarCuentasRun("111-1");
+
 }

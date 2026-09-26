@@ -50,10 +50,16 @@ public abstract class Cuenta { /// es abstracto
 
     /// metodos
     public void depositar(double monto) {
-
+        if (monto > 0) {
+            this.saldo += monto;
+        } else {
+            throw new IllegalArgumentException("El deposito no puede ser menor que 0.");
+        }
     }
 
+
     public abstract void girar(double monto);
+
 
     public abstract void imprimirCartola();
 }
